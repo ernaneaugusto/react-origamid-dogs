@@ -1,8 +1,9 @@
+import Api from './api/Api';
 import './App.css';
 
 function App() {
   return (
-    <h1>Home</h1>
+    <Api />
   );
 }
 
