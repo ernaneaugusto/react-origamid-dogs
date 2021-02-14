@@ -1,0 +1,39 @@
+@import "./static/styles/Variables";
+
+// RESETS
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  color: $black_333;
+  font-family: $font_type_first;
+}
+
+h1, h2, h3, h4, h5, h6, p {
+  margin: 0;
+}
+
+ul, li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+img {
+  display: block;
+  max-width: 100%;
+}
+
+button, input {
+  display: block;
+  font-size: $font_default;
+  font-family: $font_type_first;
+}
+
+.container {
+  max-width: $max_width;
+  padding: 0 1rem;
+  margin: 0 auto;
+}
