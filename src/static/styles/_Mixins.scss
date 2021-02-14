@@ -1,0 +1,6 @@
+@import "./_Variables";
+
+@mixin hover_transition {
+  outline: none;
+  box-shadow: 0 0 0 1px $yellow_light, 0 0 0 2px $yellow_dark;
+}

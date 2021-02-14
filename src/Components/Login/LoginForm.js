@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import API_URLS from "../../config/api/apiUrls";
+import Input from "./../Forms/Input";
+import Button from "./../Forms/Button";
 
 const LoginForm = () => {
   const [username, setUsername] = useState("");
@@ -32,24 +34,10 @@ const LoginForm = () => {
       <h1>Login</h1>
 
       <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          name="username"
-          value={username}
-          onChange={(event) => setUsername(event.target.value)}
-        />
-
-        <input
-          type="password"
-          name=""
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-        />
-
-        <button type="submit">Entrar</button>
+        <Input label="Usuário" type="text" name="username" />
+        <Input label="Senha" type="password" name="password" />
+        <Button>Entrar</Button>
       </form>
-
-      <Link to="/login/criar">Cadastro</Link>
     </section>
   );
 };

@@ -1,0 +1,25 @@
+@import "./../../static/styles/_Variables";
+@import "./../../static/styles/_Mixins";
+
+.button {
+  font-family: $font_type_first;
+  cursor: pointer;
+  border: none;
+  border-radius: 0.4rem;
+  background-color: $yellow_dark;
+  color: $brown;
+  padding: 0.8rem 1.2rem;
+  transition: $transition_time ease-in-out;
+  transition-property: box-shadow;
+  min-width: $btn_min_width;
+
+  &:hover,
+  &:focus {
+    @include hover_transition;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: wait;
+  }
+}

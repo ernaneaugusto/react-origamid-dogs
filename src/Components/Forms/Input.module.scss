@@ -1,0 +1,35 @@
+@import "./../../static/styles/_Variables";
+@import "./../../static/styles/_Mixins";
+
+.wrapper {
+  margin-bottom: 1rem;
+
+  .input {
+    display: block;
+    border: 1px solid $gray_light;
+    width: 100%;
+    padding: 0.8rem;
+    border-radius: $border_radius;
+    background-color: $gray_light;
+    transition: $transition_time;
+    transition-property: box-shadow, background-color;
+
+    &:hover,
+    &:focus {
+      @include hover_transition;
+      background-color: $white;
+    }
+  }
+
+  .label {
+    display: block;
+    line-height: 1;
+    padding-bottom: 0.5rem;
+  }
+
+  .error {
+    color: $red;
+    font-size: $font_error;
+    margin-top: 0.25rem;
+  }
+}

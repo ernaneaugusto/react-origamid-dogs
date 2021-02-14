@@ -1,15 +1,28 @@
 // FONTS
+$font_root: 16px;
+
 $font_type_first: Helvetica, Arial, sans-serif;
 $font_type_second: 'Spectral', Georgia;
-$font_default: 16px;
+$font_default: 1rem;
+$font_error: .875rem;
 
 // SIZES
-$max_width: 50rem;
+$btn_min_width: 8rem;
+$border_radius: .4rem;
 $header_height: 4rem; // padroniza a altura do header e padding-top do body
+$max_width: 50rem;
 
 // Z-INDEX
 $z_index_header: 100;
 
 // COLORS
 $black_333: #333;
+$brown: #764701;
+$gray_light: #eee;
+$red: #f31;
+$yellow_dark: #fb1;
+$yellow_light: #fea;
 $white: #fff;
+
+// EFFECTS
+$transition_time: .2s;
