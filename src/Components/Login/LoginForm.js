@@ -1,5 +1,5 @@
 import React from "react";
-import API_URLS from "../../config/api/apiUrls";
+import { TOKEN_POST } from "../../config/api/api";
 import Input from "./../Forms/Input";
 import Button from "./../Forms/Button";
 import useForm from "./../../Hooks/useForm";
@@ -8,24 +8,22 @@ const LoginForm = () => {
   const username = useForm();
   const password = useForm();
 
-  function handleSubmit(event) {
+  // funcao assincrona para fazer login o usuario
+  async function handleSubmit(event) {
     event.preventDefault();
 
     if (username.validate() && password.validate()) {
-      fetch(API_URLS.jwtAuth, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        // body: JSON.stringify(),
-      })
-        .then((res) => {
-          console.log("res", res);
-          return res.json();
-        })
-        .then((json) => {
-          console.log("### json", json);
-        });
+      const api = TOKEN_POST({
+        username: username.value,
+        password: password.value,
+      });
+
+      // espera fazer o post para buscar o token na api
+      const response = await fetch(api.url, api.options);
+      // espera formatar os dados de retorno da api como json
+      const json = await response.json();
+      // seta o token no localStorage do navegador para utilizar futuramente
+      window.localStorage.setItem("token", json.token);
     }
   }
 
