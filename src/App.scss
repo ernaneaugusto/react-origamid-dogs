@@ -1,4 +1,4 @@
-@import "./static/styles/Variables";
+@import "./static/styles/_Variables";
 
 // RESETS
 * {
@@ -7,6 +7,7 @@
 
 body {
   margin: 0;
+  padding-top: $header_height;
   color: $black_333;
   font-family: $font_type_first;
 }
@@ -30,6 +31,10 @@ button, input {
   display: block;
   font-size: $font_default;
   font-family: $font_type_first;
+}
+
+a {
+  text-decoration: none;
 }
 
 .container {
