@@ -19,6 +19,14 @@
       @include hover_transition;
       background-color: $white;
     }
+    
+    &:disabled {
+      box-shadow: none;
+      background-color: $white;
+      z-index: -1;
+      pointer-events: none;
+      border-color: $gray_silver;
+    }
   }
 
   .label {
