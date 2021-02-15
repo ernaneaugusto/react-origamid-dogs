@@ -42,7 +42,7 @@ const LoginForm = () => {
           {...password}
         />
         {loading ? (
-          <Button disabled="true">Carregando...</Button>
+          <Button disabled={true}>Carregando...</Button>
         ) : (
           <Button>Entrar</Button>
         )}
@@ -54,6 +54,7 @@ const LoginForm = () => {
       </Link>
 
       <div className={styles.cadastro}>
+        <hr style={{marginBottom: "2rem"}}/>
         <h2 className="subtitle">Cadastre-se</h2>
         <p className={styles.description}>
           Ainda não pussui cadastro? Cadastre-se no botão abaixo:
