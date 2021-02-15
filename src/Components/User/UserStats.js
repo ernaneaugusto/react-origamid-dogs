@@ -1,7 +1,7 @@
 import React from "react";
 
 const UserStats = () => {
-  return <section>UserStats</section>;
+  return <section className={`anime-bottom`}>UserStats</section>;
 };
 
 export default UserStats;
