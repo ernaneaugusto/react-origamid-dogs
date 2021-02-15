@@ -1,3 +1,4 @@
+@import url("https://fonts.googleapis.com/css2?family=Spectral:wght@700&display=swap");
 @import "./static/styles/_Variables";
 
 // RESETS
@@ -13,11 +14,18 @@ body {
   font-family: $font_type_first;
 }
 
-h1, h2, h3, h4, h5, h6, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p {
   margin: 0;
 }
 
-ul, li {
+ul,
+li {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -28,7 +36,8 @@ img {
   max-width: 100%;
 }
 
-button, input {
+button,
+input {
   display: block;
   font-size: $font_default;
   font-family: $font_type_first;
@@ -36,10 +45,63 @@ button, input {
 
 a {
   text-decoration: none;
+  color: $black_333;
 }
 
 .container {
   max-width: $max_width;
   padding: 0 1rem;
   margin: 0 auto;
+}
+
+// TEXTS
+.title {
+  font-family: $font_type_second;
+  line-height: 1;
+  font-size: 3rem;
+  margin: 1rem 0;
+  position: relative;
+  z-index: 1;
+
+  &::after {
+    content: "";
+    display: block;
+    position: absolute;
+    width: 1.5rem;
+    height: 1.5rem;
+    background-color: $yellow_dark;
+    bottom: 5px;
+    left: -5px;
+    border-radius: 0.2rem;
+    z-index: -1;
+  }
+}
+
+.subtitle {
+  font-family: $font_type_second;
+  line-height: 1;
+  font-size: 1.8rem;
+
+  &::after {
+    content: "";
+    display: block;
+    background-color: $yellow_dark;
+    height: 0.4rem;
+    width: 3rem;
+    border-radius: 0.2rem;
+  }
+}
+
+// ANIMATIONS
+.anime-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  animation: animeLeft 0.5s forwards;
+}
+
+@keyframes animeLeft {
+  to {
+    opacity: 1;
+    transform: initial;
+  }
 }

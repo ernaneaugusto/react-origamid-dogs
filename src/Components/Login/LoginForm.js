@@ -4,6 +4,9 @@ import Button from "./../Forms/Button";
 import ErrorMessage from "./../Shared/ErrorMessage";
 import useForm from "./../../Hooks/useForm";
 import { UserContext } from "./../../Contexts/UserContext";
+import { Link } from "react-router-dom";
+import styles from "./LoginForm.module.scss";
+import stylesButton from "./../../Components/Forms/Button.module.scss";
 
 const LoginForm = () => {
   const username = useForm();
@@ -20,15 +23,45 @@ const LoginForm = () => {
   };
 
   return (
-    <section>
-      <h1>Login</h1>
+    <section className="anime-left container">
+      <h1 className="title">Login</h1>
 
-      <form onSubmit={handleSubmit}>
-        <Input label="Usuário" type="text" name="username"  disabled={login || loading} {...username} />
-        <Input label="Senha" type="password" name="password" disabled={login || loading} {...password} />
-        {loading ? <Button disabled="true">Carregando...</Button> : <Button>Entrar</Button>}
+      <form onSubmit={handleSubmit} className={styles.form}>
+        <Input
+          label="Usuário"
+          type="text"
+          name="username"
+          disabled={login || loading}
+          {...username}
+        />
+        <Input
+          label="Senha"
+          type="password"
+          name="password"
+          disabled={login || loading}
+          {...password}
+        />
+        {loading ? (
+          <Button disabled="true">Carregando...</Button>
+        ) : (
+          <Button>Entrar</Button>
+        )}
         {error && <ErrorMessage type="danger" message={error} />}
       </form>
+
+      <Link className={styles.perdeu} to="/login/perdeu">
+        Esqueceu a senha?
+      </Link>
+
+      <div className={styles.cadastro}>
+        <h2 className="subtitle">Cadastre-se</h2>
+        <p className={styles.description}>
+          Ainda não pussui cadastro? Cadastre-se no botão abaixo:
+        </p>
+        <Link className={stylesButton.button} to="/login/criar">
+          Cadastre-se
+        </Link>
+      </div>
     </section>
   );
 };
