@@ -10,7 +10,7 @@
   color: $brown;
   padding: 0.8rem 1.2rem;
   transition: $transition_time ease-in-out;
-  transition-property: box-shadow;
+  transition-property: box-shadow, width;
   min-width: $btn_min_width;
 
   &:hover,
