@@ -15,9 +15,15 @@ export const Header = () => {
         <Link className={styles.logo} to="/" aria-label="Dogs - Página Home">
           <Dogs />
         </Link>
-        <Link className={styles.login} to="/login">
-          Login / Criar
-        </Link>
+        {context.data && context.data.username ? (
+          <Link className={styles.login} to="/conta">
+            <span style={{textTransform: "uppercase"}}>{context.data.username}</span>
+          </Link>
+        ) : (
+          <Link className={styles.login} to="/login">
+            Login / Criar
+          </Link>
+        )}
       </nav>
     </header>
   );
