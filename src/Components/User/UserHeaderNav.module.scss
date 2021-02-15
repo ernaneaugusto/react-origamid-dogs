@@ -1,0 +1,37 @@
+@import "./../../static/styles/_Variables";
+@import "./../../static/styles/_Mixins";
+
+.nav {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 1rem;
+
+  .btn {
+    background-color: $gray_light;
+    border-radius: 0.2rem;
+    height: 40px;
+    width: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px solid transparent;
+    @include hover_transition;
+    cursor: pointer;
+
+    &:hover,
+    &:focus {
+      background-color: $white;
+      box-shadow: 0 0 0 3px $gray_light;
+      border-color: $black_333;
+      outline: none;
+    }
+    &.active {
+      background-color: $white;
+      box-shadow: 0 0 0 3px $yellow_light;
+      border-color: $yellow_dark;
+    }
+    &.active svg > * {
+      fill: $yellow_dark;
+    }
+  }
+}
