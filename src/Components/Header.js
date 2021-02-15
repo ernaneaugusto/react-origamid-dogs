@@ -22,7 +22,6 @@ export const Header = () => {
                 {context.data.username}
               </span>
             </Link>
-            <button onClick={context.userLogout}>Sair</button>
           </>
         ) : (
           <Link className={styles.login} to="/login">
