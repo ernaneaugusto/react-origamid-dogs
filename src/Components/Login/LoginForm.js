@@ -23,7 +23,7 @@ const LoginForm = () => {
   };
 
   return (
-    <section className="anime-left">
+    <section className="anime-bottom">
       <h1 className="title">Login</h1>
 
       <form onSubmit={handleSubmit} className={styles.form}>

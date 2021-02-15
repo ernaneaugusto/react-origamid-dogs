@@ -93,10 +93,28 @@ a {
 }
 
 // ANIMATIONS
-.anime-left {
+@mixin animeStyles {
   opacity: 0;
-  transform: translateX(-30px);
   animation: animeLeft 0.5s forwards;
+}
+.anime-left {
+  @include animeStyles;
+  transform: translateX(-30px);
+}
+
+.anime-right {
+  @include animeStyles;
+  transform: translateX(30px);
+}
+
+.anime-bottom {
+  @include animeStyles;
+  transform: translateY(30px);
+}
+
+.anime-top {
+  @include animeStyles;
+  transform: translateY(-30px);
 }
 
 @keyframes animeLeft {
