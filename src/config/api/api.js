@@ -35,11 +35,10 @@ export const USER_POST = (body) => {
       headers: {
         "Content-Type": "application/json",
       },
+      body: JSON.stringify(body),
     },
-    body: JSON.stringify(body),
   };
 };
-
 export const USER_GET = (token) => {
   return {
     url: `${API_URL}/api/user`,
