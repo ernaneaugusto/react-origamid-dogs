@@ -1,5 +1,7 @@
 export const API_URL = "https://dogsapi.origamid.dev/json";
+export const TOKEN_DESCRIPTION = "token";
 const version = "v1";
+
 
 export const TOKEN_POST = (body) => {
   return {
@@ -10,6 +12,18 @@ export const TOKEN_POST = (body) => {
         "Content-Type": "application/json",
       },
       body: JSON.stringify(body),
+    },
+  };
+};
+
+export const USER_GET = (token) => {
+  return {
+    url: `${API_URL}/api/user`,
+    options: {
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`,
+      },
     },
   };
 };

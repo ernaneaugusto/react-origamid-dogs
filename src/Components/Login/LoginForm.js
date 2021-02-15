@@ -1,5 +1,5 @@
-import React from "react";
-import { TOKEN_POST } from "../../config/api/api";
+import React, { useEffect } from "react";
+import { TOKEN_DESCRIPTION, TOKEN_POST, USER_GET } from "../../config/api/api";
 import Input from "./../Forms/Input";
 import Button from "./../Forms/Button";
 import useForm from "./../../Hooks/useForm";
@@ -8,8 +8,25 @@ const LoginForm = () => {
   const username = useForm();
   const password = useForm();
 
+  useEffect(() => {
+    const token = window.localStorage.getItem(TOKEN_DESCRIPTION);
+
+    if(token) {
+      getUser(token);
+    }
+  }, []);
+
+  const getUser = async (token) => {
+    const api = USER_GET(token);
+
+    const response = await fetch(api.url, api.options);
+    const json = await response.json();
+
+    console.log("##getUser", json);
+  };
+
   // funcao assincrona para fazer login o usuario
-  async function handleSubmit(event) {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (username.validate() && password.validate()) {
@@ -23,9 +40,11 @@ const LoginForm = () => {
       // espera formatar os dados de retorno da api como json
       const json = await response.json();
       // seta o token no localStorage do navegador para utilizar futuramente
-      window.localStorage.setItem("token", json.token);
+      window.localStorage.setItem(TOKEN_DESCRIPTION, json.token);
+      // pega os dados do usuario passando o token retornado do login
+      getUser(json.token);
     }
-  }
+  };
 
   return (
     <section>
