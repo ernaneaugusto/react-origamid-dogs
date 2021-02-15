@@ -16,9 +16,14 @@ export const Header = () => {
           <Dogs />
         </Link>
         {context.data && context.data.username ? (
-          <Link className={styles.login} to="/conta">
-            <span style={{textTransform: "uppercase"}}>{context.data.username}</span>
-          </Link>
+          <>
+            <Link className={styles.login} to="/conta">
+              <span style={{ textTransform: "uppercase" }}>
+                {context.data.username}
+              </span>
+            </Link>
+            <button onClick={context.userLogout}>Sair</button>
+          </>
         ) : (
           <Link className={styles.login} to="/login">
             Login / Criar
