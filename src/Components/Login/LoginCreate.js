@@ -3,23 +3,30 @@ import useForm from "./../../Hooks/useForm";
 import Input from "./../Forms/Input";
 import Button from "./../Forms/Button";
 import { USER_POST } from "../../config/api/api";
+import { UserContext } from "./../../Contexts/UserContext";
+import ErrorMessage from "../Shared/ErrorMessage";
 
 const LoginCreate = () => {
   const username = useForm();
   const email = useForm("email");
   const password = useForm();
 
+  const { userLogin } = React.useContext(UserContext);
+
   // realiza o cadastro de um novo usuario
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const api = await USER_POST({
+    const api = USER_POST({
       username: username.value,
       email: email.value,
       password: password.value,
     });
 
     const response = await fetch(api.url, api.options);
+    
+    if (response.ok) userLogin(username.value, password.value);
+
     console.log("## cadastro", response);
   };
 
