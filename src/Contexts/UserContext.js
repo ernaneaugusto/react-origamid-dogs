@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useCallback } from "react";
 import { useNavigate } from "react-router-dom";
 import {
   TOKEN_DESCRIPTION,
@@ -19,34 +19,6 @@ export const UserStorage = ({ children }) => {
 
   // cria funcoes de navegacao
   const navigate = useNavigate();
-
-  useEffect(() => {
-    const autoLogin = async () => {
-      const token = window.localStorage.getItem(TOKEN_DESCRIPTION);
-
-      if (token) {
-        try {
-          setError(null);
-          setLoading(true);
-          const api = TOKEN_VALIDATE_POST(token);
-          const validateRes = await fetch(api.url, api.options);
-
-          // verifica se o token nao esta valido
-          if (!validateRes.ok) throw new Error("Token inválido.");
-
-          // faz a busca pelos dados do usuario
-          await getUser(token);
-          navigate("/conta");
-        } catch (e) {
-          userLogout();
-        } finally {
-          setLoading(false);
-        }
-      }
-    };
-
-    autoLogin();
-  }, []);
 
   const getUser = async (token) => {
     if (!token) return false;
@@ -86,14 +58,42 @@ export const UserStorage = ({ children }) => {
     }
   };
 
-  const userLogout = async () => {
+  const userLogout = useCallback(async () => {
     setData(null);
     setError(null);
     setLoading(false);
     setLogin(false);
     window.localStorage.removeItem(TOKEN_DESCRIPTION);
     navigate("/login");
-  };
+  }, [navigate]);
+
+  useEffect(() => {
+    const autoLogin = async () => {
+      const token = window.localStorage.getItem(TOKEN_DESCRIPTION);
+
+      if (token) {
+        try {
+          setError(null);
+          setLoading(true);
+          const api = TOKEN_VALIDATE_POST(token);
+          const validateRes = await fetch(api.url, api.options);
+
+          // verifica se o token nao esta valido
+          if (!validateRes.ok) throw new Error("Token inválido.");
+
+          // faz a busca pelos dados do usuario
+          await getUser(token);
+          navigate("/conta");
+        } catch (e) {
+          userLogout();
+        } finally {
+          setLoading(false);
+        }
+      }
+    };
+
+    autoLogin();
+  }, [userLogout, navigate]);
 
   return (
     <UserContext.Provider

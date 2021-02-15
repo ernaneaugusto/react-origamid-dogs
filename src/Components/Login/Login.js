@@ -1,11 +1,16 @@
 import React from "react";
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import LoginForm from "./LoginForm";
 import LoginCreate from "./LoginCreate";
 import LoginPasswordLost from "./LoginPasswordLost";
 import LoginPasswordReset from "./LoginPasswordReset";
+import { UserContext } from "../../Contexts/UserContext";
 
 const Login = () => {
+  const { login } = React.useContext(UserContext);
+
+  if (login) <Navigate to="/conta" />;
+
   return (
     <>
       <Routes>
@@ -15,7 +20,7 @@ const Login = () => {
         <Route path="resetar" element={<LoginPasswordReset />} />
       </Routes>
     </>
-  )
+  );
 };
 
 export default Login;
