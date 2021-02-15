@@ -4,3 +4,20 @@
   outline: none;
   box-shadow: 0 0 0 1px $yellow_light, 0 0 0 2px $yellow_dark;
 }
+
+@mixin transitionAll {
+  transition: ease-in-out $transition_time all;
+}
+
+@mixin buttonSmall {
+  background-color: $gray_light;
+  border-radius: 0.2rem;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid transparent;
+  cursor: pointer;
+  
+}
