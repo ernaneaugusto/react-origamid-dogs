@@ -1,0 +1,11 @@
+@import "./../../static/styles/_Variables";
+@import "./../../static/styles/_Mixins";
+
+.header {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  margin-top: 1rem;
+  margin-bottom: 2rem;
+  position: relative;
+}
