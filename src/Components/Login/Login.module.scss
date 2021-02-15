@@ -1,0 +1,32 @@
+@import "./../../static/styles/_Variables";
+
+.login {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  min-height: calc((100vh - #{$header_height}));
+
+  &::before {
+    content: "";
+    display: block;
+    background: url("./../../static/assets/login.jpg") no-repeat center center;
+    background-size: cover;
+  }
+
+  .forms {
+    max-width: 30rem;
+    padding: 2rem;
+  }
+}
+
+@media (max-width: 50rem) {
+  .login {
+    grid-template-columns: 1fr;
+    &::before {
+      display: none;
+    }
+    .forms {
+      max-width: 100%;
+    }
+  }
+}
