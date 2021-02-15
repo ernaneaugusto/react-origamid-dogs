@@ -7,6 +7,10 @@ const types = {
     regex: /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/,
     message: "Preencha um e-mail válido. Ex: seuemail@email.com",
   },
+  number: {
+    regex: /^\d+$/,
+    message: "Utilize somente números.",
+  },
 };
 
 const useForm = (type) => {
@@ -15,7 +19,7 @@ const useForm = (type) => {
 
   const onChange = (event) => {
     const value = event.target.value;
-    if(error) validate(value);
+    if (error) validate(value);
     setValue(value);
   };
 
