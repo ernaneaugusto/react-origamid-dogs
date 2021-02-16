@@ -1,0 +1,13 @@
+@import "./../../static/styles/_Variables";
+@import "./../../static/styles/_Mixins";
+
+.modal {
+
+}
+
+@media (max-width: 40rem) {
+  .photo {
+    grid-column: initial;
+    grid-row: span initial;
+  }
+}
