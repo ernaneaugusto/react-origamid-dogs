@@ -42,12 +42,9 @@
     grid-column: 2 / 4;
     grid-row: span 2;
   }
-
-  .acessos {
-  }
 }
 
-@media (max-width: 40rem) {
+@media (max-width: $max_width_media_query) {
   .photo {
     grid-column: initial;
     grid-row: span initial;

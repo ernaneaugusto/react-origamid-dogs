@@ -2,12 +2,19 @@
 @import "./../../static/styles/_Mixins";
 
 .modal {
-
+  position: fixed;
+  width: 100vw;
+  height: 100vh;
+  top: 0;
+  left: 0;
+  background-color: rgba($black, 0.4);
+  display: flex;
+  z-index: 9999;
+  padding: 2rem calc(2rem + 15px) 2rem 4rem;
 }
 
-@media (max-width: 40rem) {
-  .photo {
-    grid-column: initial;
-    grid-row: span initial;
+@media (max-width: $max_width_media_query) {
+  .modal {
+    padding: 2rem calc(2rem + 15px) 2rem 4rem;
   }
 }

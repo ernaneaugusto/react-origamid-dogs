@@ -6,7 +6,7 @@ const Feed = () => {
   const [modalPhoto, setModalPhoto] = React.useState(null);
 
   return (
-    <section className={`anime-bottom`}>
+    <section>
       {modalPhoto && (
         <FeedModal photo={modalPhoto} setModalPhoto={setModalPhoto} />
       )}
